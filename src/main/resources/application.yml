@@ -1,0 +1,41 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://106.15.78.201:3306/todoo?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=false
+    username: root
+    password: 12345
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+#  mail:
+#    default-encoding: UTF-8
+#    host: smtp.163.com
+#    port: 25
+#    #??????
+#    username: zhanxinwang2022@163.com
+#    #???QQ??????POP3/SMTP??????????QQ??-??-??
+#    password: AJZLISGYZSNSLNVY
+#    properties:
+#      mail:
+#        smtp:
+#          auth: true
+#          starttls:
+#            enable: true
+#            required: true
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+
+
+#file:
+#  doc-dir: file/
+
+#path:
+#  video-upload-path: "C:/opt/ZhanXin/videos/"
+#  picture-upload-path: "C:/opt/ZhanXin/images/"
