@@ -111,7 +111,7 @@ public class MissionController {
     @RequestMapping(value = "changeMissionTime",method = RequestMethod.GET)
     public Object changeMissionTime(@RequestParam(value ="scheme_start_time",required = false) @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") DateTime scheme_start_time,
                                     @RequestParam(value ="scheme_end_time",required = false)  @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") DateTime scheme_end_time,
-                                    @RequestParam(value ="scheme_date",required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date scheme_date,
+                                    Date scheme_date,
                                     int missionID){
         JSONObject jsonObject = new JSONObject();
         try{
@@ -216,7 +216,7 @@ public class MissionController {
                              @RequestParam(value ="scheme_description",required = false) String scheme_description,
                              @RequestParam(value ="scheme_start_time",required = false) @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") DateTime scheme_start_time,
                              @RequestParam(value ="scheme_end_time",required = false)  @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") DateTime scheme_end_time,
-                             @RequestParam(value ="scheme_date",required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date scheme_date,
+                             @RequestParam(value ="scheme_date",required = false) Date scheme_date,
                              @RequestParam(value ="priority",required = false) String priority,
                              @RequestParam(value ="state",required = false) String state,
                              @RequestParam(value ="tag_name",required = false) String tag_name,
