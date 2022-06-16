@@ -17,6 +17,16 @@ public interface SchemeMapper {
             "AND scheme_end_time >CAST(#{today} AS DATETIME) OR scheme_date = CAST(#{today} AS DATETIME)")
     List<Scheme> findBySchemeDate(@Param("today") Date req);
 
+    @Select("SELECT * FROM scheme WHERE scheme_end_time < CAST(#{today} AS DATETIME) OR scheme_date < CAST(#{today} AS DATETIME) AND state = '0'")
+    List<Scheme> findUndo(@Param("today") Date req);
+
+    @Select("SELECT * FROM scheme WHERE scheme_start_time > CAST(#{today} AS DATETIME) OR scheme_date > CAST(#{today} AS DATETIME)")
+    List<Scheme> findFuture(@Param("today") Date req);
+
+    @Select("SELECT * FROM scheme WHERE scheme_start_time < CAST(#{today} AS DATETIME) " +
+            "AND repetition >0 ")
+    List<Scheme> findBySchemeRep(@Param("today") Date req);
+
     @Insert("insert into scheme(scheme_title,scheme_description,scheme_start_time,scheme_end_time," +
             "scheme_date,priority,state,tag_name,repetition,repetition_scope,user_id) " +
             "values (#{scheme_title},#{scheme_description},#{scheme_start_time},#{scheme_end_time},#{scheme_date},#{priority},#{state},#{tag_name}," +

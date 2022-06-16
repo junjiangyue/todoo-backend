@@ -66,4 +66,15 @@ public class SchemeService {
         return schemeMapper.changeMissionTitle(title,missionID);
     }
 
+    public List<Scheme> findCheckList(Date date){
+        return schemeMapper.findBySchemeRep(date);
+    }
+
+    public List<Scheme> findUndo(Date date){
+        return schemeMapper.findUndo(date);
+    }
+
+    public List<Scheme> findFuture(Date date){
+        return schemeMapper.findFuture(date);
+    }
 }

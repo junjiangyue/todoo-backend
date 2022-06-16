@@ -44,6 +44,48 @@ public class MissionController {
         return schemeList;
     }
 
+    @ApiOperation(value = "获取某个用户某日的打卡任务",notes = "提交：用户ID")
+    @RequestMapping(value = "getCheckList",method = RequestMethod.GET)
+    public Object getUserCheck(Date req){
+        JSONObject jsonObject = new JSONObject();
+        List<Scheme> schemeList = schemeService.findCheckList(req);
+        System.out.println(schemeList);
+        if(schemeList.isEmpty()) {
+            jsonObject.put("message", "您查找的用户信息不存在，查找失败!");
+            jsonObject.put("status", -1);
+            return jsonObject;
+        }
+        return schemeList;
+    }
+
+    @ApiOperation(value = "获取某个用户某日的过期任务",notes = "提交：用户ID")
+    @RequestMapping(value = "getUndoList",method = RequestMethod.GET)
+    public Object getUndo(Date req){
+        JSONObject jsonObject = new JSONObject();
+        List<Scheme> schemeList = schemeService.findUndo(req);
+        System.out.println(schemeList);
+        if(schemeList.isEmpty()) {
+            jsonObject.put("message", "您查找的用户信息不存在，查找失败!");
+            jsonObject.put("status", -1);
+            return jsonObject;
+        }
+        return schemeList;
+    }
+
+    @ApiOperation(value = "获取某个用户某日的未来任务",notes = "提交：用户ID")
+    @RequestMapping(value = "getfFutureList",method = RequestMethod.GET)
+    public Object getFuture(Date req){
+        JSONObject jsonObject = new JSONObject();
+        List<Scheme> schemeList = schemeService.findFuture(req);
+        System.out.println(schemeList);
+        if(schemeList.isEmpty()) {
+            jsonObject.put("message", "您查找的用户信息不存在，查找失败!");
+            jsonObject.put("status", -1);
+            return jsonObject;
+        }
+        return schemeList;
+    }
+
     @ApiOperation(value = "获取某个任务的信息",notes = "提交：任务ID")
     @RequestMapping(value = "getMission",method = RequestMethod.GET)
     public Object getMission(Long req){
@@ -170,7 +212,7 @@ public class MissionController {
         return jsonObject;
     }
 
-    @ApiOperation(value = "修改任务优先级",notes = "提交：任务ID")
+    @ApiOperation(value = "修改任务重复次数",notes = "提交：任务ID")
     @RequestMapping(value = "changeMissionRep",method = RequestMethod.GET)
     public Object changeMissionRep(int rep,String repScope,int missionID){
         JSONObject jsonObject = new JSONObject();
