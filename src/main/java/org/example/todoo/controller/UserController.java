@@ -26,6 +26,7 @@ public class UserController {
 
     @ApiOperation(value = "获取某个用户的信息",notes = "提交：用户ID")
     @RequestMapping(value = "show",method = RequestMethod.GET)
+
     public Object show(Long req){
         JSONObject jsonObject = new JSONObject();
         Useraccount useraccount;
